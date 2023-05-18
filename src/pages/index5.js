@@ -6,7 +6,7 @@ const HolidayChaloAI = () => {
 
   // Fetch data from OpenAI API
   const fetchChatData = async (userInput) => {
-    const apiKey = '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'; // Replace with your actual API key
+    const apiKey = ''; // Replace with your actual API key
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const headers = new Headers();
     headers.append('Authorization', `Bearer ${apiKey}`);
