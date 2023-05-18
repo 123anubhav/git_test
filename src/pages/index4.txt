@@ -2,7 +2,7 @@
 // //import { OpenAI } from '@openai/api';
 
 //  const openai = new OpenAI(process.env.OPENAI_API_KEY);
-// //const openai = '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'
+// //const openai = ''
 
 // const Chat = () => {
 //   const [messages, setMessages] = useState([
