@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+ import React, { useRef, useEffect } from 'react';
 
 const HolidayChaloAI = () => {
   const chatOutputRef = useRef(null);
@@ -18,9 +18,7 @@ const HolidayChaloAI = () => {
         { role: 'user', content: userInput }
       ],
       model: 'gpt-3.5-turbo',
-      max_tokens: 2000,
-      presence_penalty: 0.0,
-      frequency_penalty:0.0,
+      max_tokens: 2000
     };
 
     const requestOptions = {
@@ -40,14 +38,78 @@ const HolidayChaloAI = () => {
     if (isFormResponse) {
       chatOutput.innerHTML += `<div class="formOutput"><strong>USER:</strong> ${output}</div>`;
     } else {
-      chatOutput.innerHTML += `<p><strong>Holiday Socho AI:</strong> ${output}</p>`;
+
+
+var rfv=output;
+//var tg=rfv.replace(/Day 1|Day 2|Day 3|Day 4/ig, "");
+// var tg=rfv.replace('Day 1','');
+// var tg=tg.replace('Day 2','');
+// var tg=tg.replace('Day 3','');
+// var tg=tg.replace('Day 4','');
+// var tg=tg.replace('Day 5','');
+// var tg=tg.replace('Day 6','');
+
+var as = rfv.split("|\n|");
+
+var tbs="<table>";
+
+
+tbs +=`<tr>td><b>: | Day * | *Time | Activity | Transportation | Location Details | Cost |</b></td></tr>`;
+for (var j = 0; j < as.length; j++) {
+
+
+if(as[j].indexOf('Day 1') != -1 || as[j].indexOf('DAY 1') != -1){
+
+tbs +=`<tr><td>Day 1</td></tr>`;
+
+
+}
+else if(as[j].indexOf('Day 2') != -1 || as[j].indexOf('DAY 2') != -1){
+
+tbs +=`<tr><td>Day 2</td></tr>`;
+
+
+}
+else if(as[j].indexOf('Day 3') != -1 || as[j].indexOf('DAY 3') != -1){
+
+tbs +=`<tr><td>Day 3</td></tr>`;
+
+
+}
+else if(as[j].indexOf('Day 4') != -1 || as[j].indexOf('DAY 4') != -1){
+
+tbs +=`<tr><td>Day 4</td></tr>`;
+
+
+}
+else if(as[j].indexOf('Day 5') != -1 || as[j].indexOf('DAY 5') != -1){
+
+tbs +=`<tr><td>Day 5</td></tr>`;
+
+
+}
+else if(as[j].indexOf('Day 6') != -1 || as[j].indexOf('DAY 6') != -1){
+
+tbs +=`<tr><td>Day 6</td></tr>`;
+
+
+}
+else
+{
+tbs +=`<tr><td>${as[j]}</td></tr>`;
+
+}
+//chatOutput.innerHTML += `<p><strong>Holiday Socho sAI:</strong> ${as[j]}</p>`;
+
+
+
+}
+tbs +=`</table>`;
+      chatOutput.innerHTML=tbs;
     }
     // Scroll to bottom of chat output
     chatOutput.scrollTop = chatOutput.scrollHeight;
   };
-
-
-
 
   // Handle form submission
   const handleFormSubmit = async (event) => {
@@ -62,7 +124,6 @@ const HolidayChaloAI = () => {
     const chatResponse = await fetchChatData(userInput);
 
     // Display chat response in chat output
-    //
     updateChatOutput(chatResponse, false);
 
     // Reset user input
@@ -77,13 +138,8 @@ const HolidayChaloAI = () => {
   return (
     <div>
       <h1>Holiday Chalo AI (3.5)</h1>
-      <h2 style={{ textAlign: 'center' }}> Qury To Run :- </h2>
       <h2 style={{ textAlign: 'center' }}>
-     
-      Please form a JSON format file for a [3 Days] [adventurous] trip to [Bangkok, Thailand] with budget of [16000 INR]having only details as described after this.
-Day as 'Day DD' fromat labeled as day, under that store all the sub detailed under label schedule, i.e. hourly time as 'hh:mm AM/PM' fromat labeled as time,
-activity location labeled as location, describing activity labeled as activity, mode of transportation to reach the destination labeled as transport,
-highlighted tips for that location labeled as highlight, local insights and tips of that location labeled as local_insights; label all these details under label trip_details.
+      Please provide a detailed itinerary for a (3-day] trip to [Bangkok, Thailand] that includes recommendations for hotels within a budget of [$200 USD], top-rated local restaurants, must-visit tourist attractions, and [fun activities] to do in the city. The itinerary should be presented in a table format, organized by day and hourly format. Please also suggest the best mode of [transportation (driving/walking/transit/biking)] for each route. Additionally, please provide location details and highlights for each activity or attraction, including any local insights or tips that can help me make the most of my trip.” can you include weather temperature as of today prompt as well but display all in a table format
       </h2>
       <div id="chatContainer">
         <div id="chatOutput" ref={chatOutputRef}></div>
@@ -93,7 +149,6 @@ highlighted tips for that location labeled as highlight, local insights and tips
         </form>
       </div>
       <style jsx>
-      
         {`
           body {
             font-family: Arial, sans-serif;
@@ -169,4 +224,3 @@ text-align: center;
 
 
 export default HolidayChaloAI;
-

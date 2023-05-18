@@ -1,0 +1,7 @@
+
+1. Install open ai --> Next Js
+npm install next react react-dom openai
+
+2. npm install openai
+
+write a code to implement Google Map in Next JS using Google Maps in Next Js showing Multiple Location entered by the user

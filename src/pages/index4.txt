@@ -1,0 +1,163 @@
+// import { useState, useRef } from 'react';
+// //import { OpenAI } from '@openai/api';
+
+//  const openai = new OpenAI(process.env.OPENAI_API_KEY);
+// //const openai = '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'
+
+// const Chat = () => {
+//   const [messages, setMessages] = useState([
+//     { role: 'system', content: 'Hello! I am Holiday Socho AI. How can I assist you?' },
+//   ]);
+//   const [userInput, setUserInput] = useState('');
+//   const chatOutputRef = useRef(null);
+
+//   const handleInputChange = (event) => {
+//     setUserInput(event.target.value);
+//   };
+
+//   const handleFormSubmit = async (event) => {
+//     event.preventDefault();
+//     const response = await openai.completions.create({
+//       engine: 'text-davinci-002',
+//       prompt: userInput,
+//       maxTokens: 2000,
+//       n: 1,
+//       stop: '\n',
+//     });
+//     const chatResponse = response.choices[0].text.trim();
+//     setMessages((prevMessages) => [
+//       ...prevMessages,
+//       { role: 'user', content: userInput },
+//       { role: 'system', content: chatResponse },
+//     ]);
+//     setUserInput('');
+//   };
+
+//   const chatOutput = messages.map((message, index) => {
+//     if (message.role === 'user') {
+//       return (
+//         <tr key={index}>
+//           <td>{message.content}</td>
+//           <td></td>
+//           <td></td>
+//         </tr>
+//       );
+//     } else if (message.role === 'system') {
+//       return (
+//         <tr key={index}>
+//           <td></td>
+//           <td>{new Date().toLocaleDateString()}</td>
+//           <td>{message.content}</td>
+//         </tr>
+//       );
+//     }
+//   });
+
+//   return (
+//     <div>
+//       <h1>Holiday Chalo AI (3.5)</h1>
+//       <h2 style={{ textAlign: 'center' }}>
+//         Plan a detailed hourly trip To Manali for 2 days. Make 3 column (Day, Time, Activity) and show the result in
+//         Tabular Format
+//       </h2>
+//       <div id="chatContainer">
+//         <table id="chatOutput" ref={chatOutputRef}>
+//           <tbody>{chatOutput}</tbody>
+//         </table>
+//         <form id="chatForm" onSubmit={handleFormSubmit}>
+//           <input
+//             type="text"
+//             id="userInput"
+//             name="userInput"
+//             autoComplete="off"
+//             placeholder="Type your message..."
+//             value={userInput}
+//             onChange={handleInputChange}
+//           />
+//           <button type="submit">Send</button>
+//         </form>
+//       </div>
+//       <style jsx>{`
+//         body {
+//           font-family: Arial, sans-serif;
+//         }
+
+//         h1 {
+//           text-align: center;
+//         }
+
+//         h2 {
+//           text-align: center;
+//         }
+
+//         #chatContainer {
+//           max-width: 800px;
+//           margin: 0 auto;
+//           padding: 20px;
+//         }
+
+//         #chatOutput {
+//           width: 100%;
+//           border-collapse: collapse;
+//           margin-bottom: 20px;
+//         }
+
+//         th,
+//         td {
+//           text-align: left;
+//           padding: 8px;
+//           border-bottom: 1px solid #ddd;
+//     }
+
+//     th {
+//       font-weight: bold;
+//     }
+
+//     td:nth-child(1) {
+//       width: 100px;
+//     }
+
+//     td:nth-child(2) {
+//       width: 100px;
+//     }
+
+//     td:nth-child(3) {
+//       flex: 1;
+//     }
+
+//     #chatForm {
+//       display: flex;
+//       margin-top: 20px;
+//     }
+
+//     #userInput {
+//       flex: 1;
+//       padding: 8px;
+//       border: none;
+//       border-radius: 4px;
+//     }
+
+//     #userInput:focus {
+//       outline: none;
+//     }
+
+//     button {
+//       padding: 8px 16px;
+//       background-color: #0070f3;
+//       color: #fff;
+//       border: none;
+//       border-radius: 4px;
+//       cursor: pointer;
+//       transition: background-color 0.3s;
+//     }
+
+//     button:hover {
+//       background-color: #0056b3;
+//     }
+//   `}</style>
+// </div>
+// );
+// };
+
+// export default Chat;
+
