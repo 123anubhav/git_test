@@ -142,8 +142,8 @@ const MapPage = () => {
       </style>
 
       <script
-        // src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4TQVz0zicFzb_HOg4v_5TgAHRXJ-dLBU&libraries=places"
-         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4TQVz0zicFzb_HOg4v_5TgAHRXJ-dLBU&libraries=places"
+        // src=""
+        
 
       ></script>
     </div>
